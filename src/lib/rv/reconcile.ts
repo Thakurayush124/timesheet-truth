@@ -117,7 +117,7 @@ function makeRecord(
     exceptions.push("Worked on Week-Off");
   }
 
-  const countableException = exceptions.some((e) => e !== "Worked on Week-Off");
+  const countableException = exceptions.length > 0;
 
   return {
     date: r.date,
