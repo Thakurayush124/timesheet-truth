@@ -18,7 +18,7 @@ export function DataQualityPanel() {
     {
       key: "onlyAtt",
       ok: q.onlyInAttendance.length === 0,
-      text: `Employees only in Attendance: ${q.onlyInAttendance.length}`,
+      text: `In Attendance but not in Roster — excluded from validation: ${q.onlyInAttendance.length}`,
       rows: q.onlyInAttendance.map((e) => `${e.name} (${e.olm})`),
     },
     {
