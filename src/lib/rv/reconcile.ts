@@ -41,12 +41,14 @@ export function buildDataset(attendance: AttendanceRow[], roster: RosterRow[]): 
     daily.push(makeRecord(r, attByKey.get(k) ?? null, attMeta.get(r.olm) ?? null));
   }
 
-  // Attendance rows with no roster entry still surface (as un-planned days).
+  // Attendance rows outside the roster date grid still surface (as un-planned days),
+  // but ONLY for employees that exist in the uploaded roster.
   for (const a of attendance) {
     const k = key(a.olm, a.date);
     if (seen.has(k)) continue;
-    seen.add(k);
     const meta = rosterMeta.get(a.olm);
+    if (!meta) continue;
+    seen.add(k);
     daily.push(
       makeRecord(
         {
