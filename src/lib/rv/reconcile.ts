@@ -5,6 +5,7 @@ import type {
   DataQuality,
   ExceptionType,
   RosterRow,
+  ShiftCode,
 } from "./types";
 import { SHIFT_DEFS, circularDeltaHours, isWorkingShift, minutesToHHMM, shiftDisplay } from "./shifts";
 
