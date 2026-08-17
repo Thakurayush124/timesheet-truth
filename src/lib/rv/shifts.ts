@@ -14,7 +14,7 @@ export const SHIFT_DEFS: Record<ShiftCode, ShiftDef> = {
   L: { code: "L", label: "Leave (L)", working: false, startMin: 0, endMin: 0, plannedHours: 0 },
   H: { code: "H", label: "Holiday (H)", working: false, startMin: 0, endMin: 0, plannedHours: 0 },
   OFF: { code: "OFF", label: "Off (OFF)", working: false, startMin: 0, endMin: 0, plannedHours: 0 },
-  UNKNOWN: { code: "UNKNOWN", label: "Unknown Shift", working: false, startMin: 0, endMin: 0, plannedHours: 0 },
+  UNKNOWN: { code: "UNKNOWN", label: "Check Shift Provided", working: false, startMin: 0, endMin: 0, plannedHours: 0 },
 };
 
 export const SHIFT_FILTER_CODES: ShiftCode[] = ["A", "G", "LG", "B", "N", "WO"];
@@ -70,6 +70,13 @@ export function normalizeShift(raw: unknown): { code: ShiftCode; raw: string; un
 
 export function isWorkingShift(code: ShiftCode): boolean {
   return SHIFT_DEFS[code]?.working ?? false;
+}
+
+/** Render a shift code for tables; maps UNKNOWN to its user-facing label. */
+export function shiftDisplay(code: ShiftCode | null): string {
+  if (code === null || code === undefined) return "—";
+  if (code === "UNKNOWN") return SHIFT_DEFS.UNKNOWN.label;
+  return code;
 }
 
 const STATUS_ALIASES: Record<string, string> = {

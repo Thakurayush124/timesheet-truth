@@ -1,6 +1,7 @@
 import * as XLSX from "xlsx";
-import type { DailyRecord, EmployeeSummary, PeriodMode } from "./types";
 import { exceptionBadgeLabel, formatDay } from "./aggregate";
+import { shiftDisplay } from "./shifts";
+import type { DailyRecord, EmployeeSummary, PeriodMode } from "./types";
 
 function fileSuffix(mode: PeriodMode, anchor: string): string {
   if (!anchor) return "All-Data";
@@ -21,8 +22,8 @@ export function exportSummary(
     "Manager Email": s.managerEmail,
     Domain: s.domain,
     Period: s.periodLabel,
-    "Shift (Roster)": s.rosterShifts.join(", "),
-    "Shift (AMS)": s.amsShifts.join(", "),
+    "Shift (Roster)": s.rosterShifts.map(shiftDisplay).join(", "),
+    "Shift (AMS)": s.amsShifts.map(shiftDisplay).join(", "),
     "Planned Days": s.plannedDays,
     "Present Days": s.presentDays,
     "Attendance %": s.attendancePct === null ? "N/A" : +s.attendancePct.toFixed(2),
@@ -49,8 +50,8 @@ export function exportDaily(rows: DailyRecord[], mode: PeriodMode, anchor: strin
     Team: d.functionName,
     Domain: d.domain,
     Manager: d.managerName,
-    "Roster Shift": d.rosterShift,
-    "AMS Shift": d.amsShift ?? "-",
+    "Roster Shift": shiftDisplay(d.rosterShift),
+    "AMS Shift": shiftDisplay(d.amsShift),
     "Expected In": d.expectedIn ?? "-",
     "Actual In": d.actualIn ?? "-",
     "Expected Out": d.expectedOut ?? "-",

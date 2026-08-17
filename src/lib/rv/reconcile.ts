@@ -5,8 +5,9 @@ import type {
   DataQuality,
   ExceptionType,
   RosterRow,
+  ShiftCode,
 } from "./types";
-import { SHIFT_DEFS, circularDeltaHours, isWorkingShift, minutesToHHMM } from "./shifts";
+import { SHIFT_DEFS, circularDeltaHours, isWorkingShift, minutesToHHMM, shiftDisplay } from "./shifts";
 
 /** A check-in this far (hours) from the rostered start is a timing mismatch. */
 export const CHECKIN_TOLERANCE_HOURS = 10;
@@ -151,8 +152,8 @@ function makeRecord(
 
 function buildReason(
   exceptions: ExceptionType[],
-  rosterShift: string,
-  amsShift: string | null,
+  rosterShift: ShiftCode,
+  amsShift: ShiftCode | null,
   expectedIn: string | null,
   actualIn: string | null,
 ): string {
@@ -161,7 +162,7 @@ function buildReason(
     .map((e) => {
       if (e === "Shift Timing Mismatch") {
         if (amsShift && amsShift !== rosterShift)
-          return `Shift Timing Mismatch (Roster ${rosterShift} / AMS ${amsShift})`;
+          return `Shift Timing Mismatch (Roster ${shiftDisplay(rosterShift)} / AMS ${shiftDisplay(amsShift)})`;
         return `Shift Timing Mismatch (Expected In ${expectedIn ?? "-"} / Actual ${actualIn ?? "-"})`;
       }
       return e;

@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { exceptionBadgeLabel, formatDay } from "@/lib/rv/aggregate";
+import { shiftDisplay } from "@/lib/rv/shifts";
 import type { EmployeeSummary, ExceptionType } from "@/lib/rv/types";
 import { cn } from "@/lib/utils";
 
@@ -53,14 +54,14 @@ export function ExceptionBadges({ summary }: { summary: EmployeeSummary }) {
                   .map((detail, idx) => (
                     <li key={`${detail.date}-${idx}`} className="px-3 py-2 text-xs">
                       <p className="num font-semibold">{formatDay(detail.date)}</p>
-                      <dl className="mt-1 grid grid-cols-2 gap-x-3 gap-y-0.5 text-muted-foreground">
-                        <Row label="Roster Shift" value={detail.rosterShift} />
-                        <Row label="AMS Shift" value={detail.amsShift ?? "—"} />
-                        <Row label="Expected Check-In" value={detail.expectedIn ?? "—"} />
-                        <Row label="Actual Check-In" value={detail.actualIn ?? "—"} />
-                        <Row label="Expected Check-Out" value={detail.expectedOut ?? "—"} />
-                        <Row label="Actual Check-Out" value={detail.actualOut ?? "—"} />
-                      </dl>
+                        <dl className="mt-1 grid grid-cols-2 gap-x-3 gap-y-0.5 text-muted-foreground">
+                          <Row label="Roster Shift" value={shiftDisplay(detail.rosterShift)} />
+                          <Row label="AMS Shift" value={shiftDisplay(detail.amsShift)} />
+                          <Row label="Expected Check-In" value={detail.expectedIn ?? "—"} />
+                          <Row label="Actual Check-In" value={detail.actualIn ?? "—"} />
+                          <Row label="Expected Check-Out" value={detail.expectedOut ?? "—"} />
+                          <Row label="Actual Check-Out" value={detail.actualOut ?? "—"} />
+                        </dl>
                     </li>
                   ))}
               </ul>

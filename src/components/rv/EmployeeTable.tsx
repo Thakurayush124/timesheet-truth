@@ -15,6 +15,7 @@ import { ExceptionBadges, ExceptionSummaryText, StatusBadge } from "./ExceptionB
 import { EmployeeDrawer } from "./EmployeeDrawer";
 import { useRv } from "@/state/rv-store";
 import { formatDay, hrs, pct } from "@/lib/rv/aggregate";
+import { shiftDisplay } from "@/lib/rv/shifts";
 import { exportSummary } from "@/lib/rv/exportXlsx";
 import type { EmployeeSummary } from "@/lib/rv/types";
 
@@ -151,8 +152,8 @@ export function EmployeeTable() {
                 <TableCell className="text-xs whitespace-nowrap">
                   {filters.periodMode === "day" && anchor ? formatDay(anchor) : s.periodLabel}
                 </TableCell>
-                <TableCell className="num text-xs">{s.rosterShifts.join(", ") || "—"}</TableCell>
-                <TableCell className="num text-xs">{s.amsShifts.join(", ") || "—"}</TableCell>
+                <TableCell className="num text-xs">{s.rosterShifts.map(shiftDisplay).join(", ") || "—"}</TableCell>
+                <TableCell className="num text-xs">{s.amsShifts.map(shiftDisplay).join(", ") || "—"}</TableCell>
                 <TableCell className="num text-right">{s.mismatchDays}</TableCell>
                 <TableCell className="num text-right">{s.plannedDays}</TableCell>
                 <TableCell className="num text-right">{s.presentDays}</TableCell>

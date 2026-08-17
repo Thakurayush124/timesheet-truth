@@ -30,7 +30,7 @@ export function DataQualityPanel() {
     {
       key: "shift",
       ok: q.unknownShiftCodes.length === 0,
-      text: `Unknown shift codes: ${q.unknownShiftCodes.length}`,
+      text: `Check Shift Provided: ${q.unknownShiftCodes.length}`,
       rows: q.unknownShiftCodes.map((c) => `${c.source}: "${c.code}" × ${c.count}`),
     },
     {
