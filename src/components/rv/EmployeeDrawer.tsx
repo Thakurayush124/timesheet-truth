@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/table";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { exceptionBadgeLabel, formatDay, hrs, pct } from "@/lib/rv/aggregate";
+import { shiftDisplay } from "@/lib/rv/shifts";
 import type { EmployeeSummary } from "@/lib/rv/types";
 import { StatusBadge } from "./ExceptionBadges";
 import { cn } from "@/lib/utils";
@@ -98,8 +99,8 @@ export function EmployeeDrawer({
                       <TableCell className="num whitespace-nowrap text-xs">
                         {formatDay(day.date)}
                       </TableCell>
-                      <TableCell className="num text-xs">{day.rosterShift}</TableCell>
-                      <TableCell className="num text-xs">{day.amsShift ?? "—"}</TableCell>
+                      <TableCell className="num text-xs">{shiftDisplay(day.rosterShift)}</TableCell>
+                      <TableCell className="num text-xs">{shiftDisplay(day.amsShift)}</TableCell>
                       <TableCell className="num text-xs">{day.expectedIn ?? "—"}</TableCell>
                       <TableCell className="num text-xs">{day.actualIn ?? "—"}</TableCell>
                       <TableCell className="num text-xs">{day.expectedOut ?? "—"}</TableCell>
