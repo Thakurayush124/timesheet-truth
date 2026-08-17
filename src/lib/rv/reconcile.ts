@@ -6,7 +6,7 @@ import type {
   ExceptionType,
   RosterRow,
 } from "./types";
-import { SHIFT_DEFS, circularDeltaHours, isWorkingShift, minutesToHHMM } from "./shifts";
+import { SHIFT_DEFS, circularDeltaHours, isWorkingShift, minutesToHHMM, shiftDisplay } from "./shifts";
 
 /** A check-in this far (hours) from the rostered start is a timing mismatch. */
 export const CHECKIN_TOLERANCE_HOURS = 10;
