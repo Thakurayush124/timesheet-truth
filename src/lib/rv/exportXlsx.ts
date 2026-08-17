@@ -1,6 +1,7 @@
 import * as XLSX from "xlsx";
-import type { DailyRecord, EmployeeSummary, PeriodMode } from "./types";
 import { exceptionBadgeLabel, formatDay } from "./aggregate";
+import { shiftDisplay } from "./shifts";
+import type { DailyRecord, EmployeeSummary, PeriodMode } from "./types";
 
 function fileSuffix(mode: PeriodMode, anchor: string): string {
   if (!anchor) return "All-Data";
