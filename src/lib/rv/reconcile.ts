@@ -161,7 +161,7 @@ function buildReason(
     .map((e) => {
       if (e === "Shift Timing Mismatch") {
         if (amsShift && amsShift !== rosterShift)
-          return `Shift Timing Mismatch (Roster ${rosterShift} / AMS ${amsShift})`;
+          return `Shift Timing Mismatch (Roster ${shiftDisplay(rosterShift)} / AMS ${shiftDisplay(amsShift)})`;
         return `Shift Timing Mismatch (Expected In ${expectedIn ?? "-"} / Actual ${actualIn ?? "-"})`;
       }
       return e;
