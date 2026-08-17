@@ -151,8 +151,8 @@ function makeRecord(
 
 function buildReason(
   exceptions: ExceptionType[],
-  rosterShift: string,
-  amsShift: string | null,
+  rosterShift: ShiftCode,
+  amsShift: ShiftCode | null,
   expectedIn: string | null,
   actualIn: string | null,
 ): string {
