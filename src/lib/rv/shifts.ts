@@ -72,6 +72,13 @@ export function isWorkingShift(code: ShiftCode): boolean {
   return SHIFT_DEFS[code]?.working ?? false;
 }
 
+/** Render a shift code for tables; maps UNKNOWN to its user-facing label. */
+export function shiftDisplay(code: ShiftCode | null): string {
+  if (code === null || code === undefined) return "—";
+  if (code === "UNKNOWN") return SHIFT_DEFS.UNKNOWN.label;
+  return code;
+}
+
 const STATUS_ALIASES: Record<string, string> = {
   present: "Present",
   p: "Present",
