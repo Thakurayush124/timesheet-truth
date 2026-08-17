@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { exceptionBadgeLabel, formatDay } from "@/lib/rv/aggregate";
+import { shiftDisplay } from "@/lib/rv/shifts";
 import type { EmployeeSummary, ExceptionType } from "@/lib/rv/types";
 import { cn } from "@/lib/utils";
 
