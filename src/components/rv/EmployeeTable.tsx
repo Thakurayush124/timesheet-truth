@@ -15,6 +15,7 @@ import { ExceptionBadges, ExceptionSummaryText, StatusBadge } from "./ExceptionB
 import { EmployeeDrawer } from "./EmployeeDrawer";
 import { useRv } from "@/state/rv-store";
 import { formatDay, hrs, pct } from "@/lib/rv/aggregate";
+import { shiftDisplay } from "@/lib/rv/shifts";
 import { exportSummary } from "@/lib/rv/exportXlsx";
 import type { EmployeeSummary } from "@/lib/rv/types";
 
