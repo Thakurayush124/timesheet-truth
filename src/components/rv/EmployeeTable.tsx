@@ -152,8 +152,8 @@ export function EmployeeTable() {
                 <TableCell className="text-xs whitespace-nowrap">
                   {filters.periodMode === "day" && anchor ? formatDay(anchor) : s.periodLabel}
                 </TableCell>
-                <TableCell className="num text-xs">{s.rosterShifts.join(", ") || "—"}</TableCell>
-                <TableCell className="num text-xs">{s.amsShifts.join(", ") || "—"}</TableCell>
+                <TableCell className="num text-xs">{s.rosterShifts.map(shiftDisplay).join(", ") || "—"}</TableCell>
+                <TableCell className="num text-xs">{s.amsShifts.map(shiftDisplay).join(", ") || "—"}</TableCell>
                 <TableCell className="num text-right">{s.mismatchDays}</TableCell>
                 <TableCell className="num text-right">{s.plannedDays}</TableCell>
                 <TableCell className="num text-right">{s.presentDays}</TableCell>

@@ -97,8 +97,8 @@ export function DailyTable() {
                 </TableCell>
                 <TableCell className="text-xs font-medium">{row.employeeName}</TableCell>
                 <TableCell className="num text-xs">{row.olm}</TableCell>
-                <TableCell className="num text-xs">{row.rosterShift}</TableCell>
-                <TableCell className="num text-xs">{row.amsShift ?? "—"}</TableCell>
+                <TableCell className="num text-xs">{shiftDisplay(row.rosterShift)}</TableCell>
+                <TableCell className="num text-xs">{shiftDisplay(row.amsShift)}</TableCell>
                 <TableCell className="num text-xs">{row.expectedIn ?? "—"}</TableCell>
                 <TableCell className="num text-xs">{row.actualIn ?? "—"}</TableCell>
                 <TableCell className="num text-xs">{row.expectedOut ?? "—"}</TableCell>
